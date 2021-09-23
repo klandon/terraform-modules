@@ -14,7 +14,6 @@ provider "kind" {}
 
 # Local Data
 locals {
-
 }
 
 # Kind Init
@@ -25,7 +24,7 @@ resource "kind_cluster" "kind-base" {
      kind = "Cluster"
      api_version = "kind.x-k8s.io/v1alpha4"
      networking {
-        disable_default_cni = false
+        disable_default_cni = var.disable_cni
         pod_subnet = "192.168.0.0/16"
      }
      node {
@@ -40,12 +39,10 @@ resource "kind_cluster" "kind-base" {
 kind: JoinConfiguration
 nodeRegistration:
     kubeletExtraArgs:
-        node-labels: "deployment.group=infrastructure"
+        node-labels: "deployment.group=${var.deployment_group_label}"
         INTF
-        ]
-         
+        ]        
      }
-     
-
   }
 }
+
