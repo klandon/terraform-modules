@@ -8,8 +8,6 @@ terraform {
   }
 }
 
-provider "kind" {}
-
 
 
 # Local Data
@@ -18,7 +16,7 @@ locals {
 
 # Kind Init
 resource "kind_cluster" "kind-base" {
-  name = "kind-base"
+  name = "base"
   wait_for_ready = true
   kind_config  {
      kind = "Cluster"
@@ -45,4 +43,3 @@ nodeRegistration:
      }
   }
 }
-

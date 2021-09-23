@@ -8,5 +8,3 @@ variable "deployment_group_label" {
     default = "worker"
     type = string
 }
-
-
